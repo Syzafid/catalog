@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 15 Nov 2024 pada 02.52
+-- Waktu pembuatan: 29 Nov 2024 pada 08.06
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -30,9 +30,9 @@ SET time_zone = "+00:00";
 CREATE TABLE `user` (
   `user_id` int(11) NOT NULL,
   `username` varchar(50) DEFAULT NULL,
-  `password` varchar(50) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
-  `no_hp` int(11) DEFAULT NULL
+  `no_hp` varchar(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -40,12 +40,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `username`, `password`, `email`, `no_hp`) VALUES
-(4, 'asdf', '123456', 'as@gmail.com', 12345),
-(5, 'nanda', 'nanda', 'nanda@hft', 0),
-(6, 'rizal', 'rizal', 'rizal@wbi.ac.id', 1234),
-(7, 'bibi', 'bibi', 'bibi@wbi.ac.id', 1234),
-(8, 'nanda', 'nanda', 'syafrizal.amri.fajar@wbi.ac.id', 1278),
-(9, 'ardy', 'ardy', 'ardy@bangke.com', 1234);
+(20, 'nanda', '$2y$10$pwVDvrSu2KWnVWQoHwqpGufcZaDaIYGlReKnUF.jJXHR0tYdlWtB6', 'nanda@gmail.com', '081312345678'),
+(21, 'nanda', '$2y$10$2rbogeZYnAKmFKefXvgC.ebVbg2i4SoMGHzgNBCcMM8EY033oWmMC', 'nanda@gmail.co.id', '081312345679');
 
 --
 -- Indexes for dumped tables
@@ -65,7 +61,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

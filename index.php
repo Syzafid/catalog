@@ -1,11 +1,10 @@
 <?php
-session_start();
-
+define('SECURE_ACCESS', true);
 include('connect.php');
 if (isset($_POST['submit'])) {
     $username = mysqli_real_escape_string($conn, $_POST['username']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
-    $query = "SELECT * FROM user WHERE username = '$username' AND password = '$password'";
+    $query = "SELECT * FROM user WHERE username = '$username'";
     $result = mysqli_query($conn, $query);
 
     if (!$result) {
@@ -14,13 +13,13 @@ if (isset($_POST['submit'])) {
 
     $row = mysqli_fetch_assoc($result);
 
-    if ($row) {
+    if ($row && password_verify($password, $row['password'])) {
         $_SESSION['username'] = $row['username'];
         header("Location: card.php");
         exit();
     } else {
         echo "<script>alert('Username atau password salah!');</script>";
-    }
+    }   
 }
 ?>
 
